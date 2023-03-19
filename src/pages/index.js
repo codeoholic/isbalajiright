@@ -10,7 +10,7 @@ const Home = ( props ) => {
 	const [ state, updateState ] = React.useState({
 
 		change_percentage: (( price - price_at_timestamp )/price_at_timestamp*100).toFixed(2),
-		percentage: (+price/10000).toFixed(2),
+		percentage: ((+price - price_at_timestamp)/10000).toFixed(2),
 		price: price,
 
 	})
@@ -25,7 +25,7 @@ const Home = ( props ) => {
 
 				price: usd_price,
 				change_percentage: (( usd_price - price_at_timestamp )/price_at_timestamp*100).toFixed(2),
-				percentage: (+usd_price/10000).toFixed(2),
+				percentage: ((+usd_price - price_at_timestamp)/10000).toFixed(2),
 
 			})
 
@@ -74,7 +74,10 @@ const Home = ( props ) => {
 						<div className="text-zinc-50 italic text-sm"><span className="line-through">Since Balaji's bet</span>. The bet is not yet officially accepted.</div>
 						<div className="text-zinc-50 italic text-sm">Change percentage since he proposed the bet terms.</div>
 						<div className="mt-2.5">
-							<div className="text-zinc-50 italic text-xs">March 17th 2023, 18:30UTC</div>
+						<div className="text-zinc-50 text-lg">${ price_at_timestamp.toLocaleString() }</div>
+							<div className="mt-2.5">
+								<div className="text-zinc-50 italic text-xs">as on March 17th 2023, 18:30UTC</div>
+							</div>
 						</div>
 						<div className="text-left">
 							<div className="mt-5 flex items-center gap-5">
