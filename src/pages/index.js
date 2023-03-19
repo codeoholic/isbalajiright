@@ -42,7 +42,26 @@ const Home = ( props ) => {
 	return (
 		<div>
 			<Head>
+				
+				{/* <!-- Primary Meta Tags --> */}
 				<title>Is Balaji right? | ${ state.price.toLocaleString() }</title>
+				<meta name="title" content="Is Balaji right?"/>
+				<meta name="description" content="Price of Bitcoin is going to cross $1M in the next 90 days due to Hyperinflation."/>
+
+				{/* <!-- Open Graph / Facebook --> */}
+				<meta property="og:type" content="website"/>
+				<meta property="og:url" content="https://isbalajiright.com/"/>
+				<meta property="og:title" content="Is Balaji right?"/>
+				<meta property="og:description" content="Price of Bitcoin is going to cross $1M in the next 90 days due to Hyperinflation."/>
+				<meta property="og:image" content="https://internetstore.b-cdn.net/isbalajiright/meta.jpg"/>
+
+				{/* <!-- Twitter --> */}
+				<meta property="twitter:card" content="summary_large_image"/>
+				<meta property="twitter:url" content="https://isbalajiright.com/"/>
+				<meta property="twitter:title" content="Is Balaji right?"/>
+				<meta property="twitter:description" content="Price of Bitcoin is going to cross $1M in the next 90 days due to Hyperinflation."/>
+				<meta property="twitter:image" content="https://internetstore.b-cdn.net/isbalajiright/meta.jpg"/>
+
 			</Head>
 			<div className="flex items-center justify-between flex-col h-view h-screen bg-gradient-to-br from-gray-700 to-gray-900 px-5 sm:px-0">
 				<div className="p-10">
