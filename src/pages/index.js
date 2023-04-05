@@ -3,10 +3,12 @@ import { ArrowLongDownIcon, ArrowLongRightIcon } from "@heroicons/react/24/solid
 import Image from "next/image"
 import Link from "next/link"
 import Head from "next/head"
+import { differenceInDays } from "date-fns"
 
 const Home = ( props ) => {
 
-	let { price, price_at_timestamp } = props
+	let { price, price_at_timestamp, days_since } = props
+	let days_since_array = days_since.toString().split("")
 	const [ state, updateState ] = React.useState({
 
 		change_percentage: (( price - price_at_timestamp )/price_at_timestamp*100).toFixed(2),
@@ -42,7 +44,7 @@ const Home = ( props ) => {
 	return (
 		<div>
 			<Head>
-				
+
 				{/* <!-- Primary Meta Tags --> */}
 				<title>Is Balaji right? | ${ state.price.toLocaleString() }</title>
 				<meta name="title" content="Is Balaji right?"/>
@@ -79,6 +81,20 @@ const Home = ( props ) => {
 								<div className="text-zinc-50 italic text-xs">as on March 17th 2023, 18:30UTC</div>
 							</div>
 						</div>
+						<div className="flex gap-1 mt-5 flex justify-center">
+							{
+
+								days_since_array.map( ( character ) => {
+
+									return (
+										<div className="bg-white w-16 font-semibold text-5xl text-zinc-700 h-20 flex items-center justify-center rounded">{ character }</div>
+									)
+
+								})
+
+							}
+						</div>
+						<div className="text-zinc-50 text-sm mt-2.5">Days since proposed</div>
 						<div className="text-left">
 							<div className="mt-5 flex items-center gap-5">
 								<div className="relative w-72 sm:w-96 h-8 bg-purple-400 rounded-sm">
@@ -134,20 +150,27 @@ const Home = ( props ) => {
 }
 
 export const getServerSideProps = async ( context ) => {
-    
+
 	const data = await fetch("https://blockchain.info/ticker")
 	const response = await data.json()
 	const price_at_timestamp = 26497.9
 	const usd_price = response.USD.last
+	const days_since = differenceInDays(
+
+		new Date(),
+		new Date(2023, 2, 17, 18, 30)
+
+	)
 	return {
-            
+
 		props: {
 
-			price: usd_price,
+			days_since,
 			price_at_timestamp: price_at_timestamp,
+			price: usd_price,
 
 		},
-	
+
 	}
 
 }
