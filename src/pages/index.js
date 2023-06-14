@@ -46,7 +46,7 @@ const Home = ( props ) => {
 			<Head>
 
 				{/* <!-- Primary Meta Tags --> */}
-				<title>Is Balaji right? | ${ state.price.toLocaleString() }</title>
+				<title>{ "Is Balaji right? | " + state.price.toLocaleString() }</title>
 				<meta name="title" content="Is Balaji right?"/>
 				<meta name="description" content="Price of Bitcoin is going to cross $1M in the next 90 days due to Hyperinflation."/>
 
@@ -72,7 +72,7 @@ const Home = ( props ) => {
 				<div className="text-center">
 					<div className="text-6xl font-semibold text-zinc-50">${ state.price.toLocaleString() }</div>
 					<div className="mt-2.5">
-						<div className={` ${ state.change_percentage > 0 ? "text-green-700" : "text-red-700" } text-xl font-semibold`}>{ state.change_percentage > 0 ? "+" : "-" }{ state.change_percentage }%</div>
+						<div className={` ${ state.change_percentage > 0 ? "text-green-700" : "text-red-700" } text-xl font-semibold`}>{ state.change_percentage > 0 ? "+" : "" }{ state.change_percentage }%</div>
 						<div className="text-zinc-50 italic text-sm"><span className="line-through">Since Balaji's bet</span>. The bet is not yet officially accepted.</div>
 						<div className="text-zinc-50 italic text-sm">Change percentage since he proposed the bet terms.</div>
 						<div className="mt-2.5">
@@ -84,10 +84,10 @@ const Home = ( props ) => {
 						<div className="flex gap-1 mt-5 flex justify-center">
 							{
 
-								days_since_array.map( ( character ) => {
+								days_since_array.map( ( character, character_index ) => {
 
 									return (
-										<div className="bg-white w-16 font-semibold text-5xl text-zinc-700 h-20 flex items-center justify-center rounded">{ character }</div>
+										<div className="bg-white w-16 font-semibold text-5xl text-zinc-700 h-20 flex items-center justify-center rounded" key={ character_index }>{ character }</div>
 									)
 
 								})
